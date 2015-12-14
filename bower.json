@@ -1,0 +1,26 @@
+{
+  "name": "generated",
+  "version": "0.0.0",
+  "authors": [
+    "nickells <ellsworth.nick@gmail.com>"
+  ],
+  "moduleType": [
+    "es6",
+    "node"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.8",
+    "jquery": "~2.1.4",
+    "angular-ui-router": "~0.2.15",
+    "bootstrap": "~3.3.6",
+    "angular-loading-bar": "~0.8.0"
+  }
+}

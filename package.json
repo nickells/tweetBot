@@ -1,0 +1,19 @@
+{
+  "name": "website",
+  "version": "1.0.0",
+  "description": "website",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3",
+    "markov": "0.0.7",
+    "mongoose": "^4.1.9",
+    "twitter": "^1.2.5"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "startdev": "sass --watch style.scss:public/style.css & nodemon server.js"
+  },
+  "author": "nick",
+  "license": "ISC"
+}

@@ -1,0 +1,29 @@
+body{
+  background: #fff;
+  font-family: Roboto;
+}
+.tweetContainer{
+  height: 480px;
+  overflow: scroll;
+}
+
+.chatContainer {
+    overflow: scroll;
+    border: 1px solid #EEE;
+    height: 480px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.chatInput{
+  width: calc(100% - 60px)
+}
+
+.grey{
+  background: #DDD;
+}
+
+.bold{
+  font-weight: bold;
+}
