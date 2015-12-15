@@ -36,8 +36,6 @@ router.get('/tweets/:username', function(req,res,next){
 })
 
 router.post('/bot', function(req,res,next){
-  console.log('text from bot is', tweetText)
-  console.log(req.body)
   var response = m.respond(req.body.body,req.body.body.length+5)
   response = response.filter(function(word){
     return word.indexOf('http') === -1 && word.indexOf('@') === -1

@@ -1,0 +1,30 @@
+ <div class="row">
+        <div class="col-md-4">
+          <form name="twitterForm" ng-submit="submitForm()">
+            <div class="form-group">
+              <input ng-model="twitterHandle" class="form-control" placeholder="username?"></input>
+              <button type="submit" class="btn btn-success">Get Tweets</button>
+            </div>
+          </form>
+        </div>
+        <div class="col-md-4" ng-show="tweets.length">
+          <div class="row">
+            <div class="col-xs-3"><img class="thumbnail" ng-src="{{tweets[0].user.profile_image_url}}"></div><div class="col-xs-9"><h3>Tweets from {{tweets[0].user.name}}</h3><hr></div>
+          </div>
+          <div class="tweetContainer">
+            <single-tweet tweet="tweet" ng-repeat ="tweet in tweets"></single-tweet>
+          </div>
+        </div>
+        <div class="col-md-4" ng-show="tweets.length">
+          <div class="chatContainer">
+            <span class="message" ng-class="message.sender === 'Me' ? 'grey' : ''" ng-repeat="message in chat"><span class="bold">{{message.sender}}:</span> {{message.text}}</span>
+            <form name="chatInput" ng-submit="sendMessage()">
+              <div class="chatInputContainer">
+                <input class="chatInput" ng-model="chatInput.text" placeholder="Chat with {{tweets[0].user.name}}Bot"></input>
+                <button type="submit" class="btn btn-success btn-sm">Send</button>
+              </div>
+            </form>
+          </div>
+          <button class="btn btn-success btn-sm" ng-click="saveChat()">Save chat</button><button class="btn btn-success btn-sm pull-right" ui-sref='chats'>See all saved chats</button>
+        </div>
+      </div>
