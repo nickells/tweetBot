@@ -4,7 +4,7 @@ var db = require('./db.js')
 var Twitter = require('twitter');
 var markov = require('markov')
  
-var m;
+var markovInstance;
 
 var twitterClient = new Twitter({
   consumer_key: process.env.TWITTER_CONSUMER_KEY || require('./keysAndSuch').twitter.consumerKey,
@@ -25,8 +25,8 @@ router.get('/tweets/:username', function(req,res,next){
       tweetText = tweets.reduce(function(str,tweet){
         return str + ' ' + tweet.text
       },'')
-      m = markov(1)
-      m.seed(tweetText)
+      markovInstance = markov(1)
+      markovInstance.seed(tweetText)
     }
     else{
       res.err(error)
@@ -35,7 +35,7 @@ router.get('/tweets/:username', function(req,res,next){
 })
 
 router.post('/bot', function(req,res,next){
-  var response = m.respond(req.body.chatBody,req.body.chatBody.length+5)
+  var response = markovInstance.respond(req.body.chatBody,req.body.chatBody.length+5)
   response = response.filter(function(word){
     return word.indexOf('http') === -1 && word.indexOf('@') === -1
   })
