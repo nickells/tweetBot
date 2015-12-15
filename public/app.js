@@ -26,6 +26,5 @@ app.config(function($stateProvider,$locationProvider,$stateProvider){
 .run(function($rootScope){
   $rootScope.$on('$stateChangeSuccess', function(event,toState){
     $rootScope.currentState = toState.name;
-    console.log($rootScope.currentState)
   })
 })

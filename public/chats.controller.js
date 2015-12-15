@@ -1,4 +1,5 @@
 app.controller('ChatCtrl', function($scope, ChatFactory, chats){
+  
   $scope.deleteChat = function(chat){
     return ChatFactory.deleteChat(chat)
     .then(function(chat){
