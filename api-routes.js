@@ -58,7 +58,7 @@ router.get('/chats', function(req,res,next){
 router.delete('/chats/:id', function(req,res,next){
   db.Chat.findById(req.params.id).remove().exec()
   .then(function(chat){
-    res.json(chat);
+    res.sendStatus(204);
   })
 
 })

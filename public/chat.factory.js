@@ -22,8 +22,8 @@ app.factory('ChatFactory', function($http){
   }
   factory.deleteChat = function(chat){
     return $http.delete('/api/chats/' + chat._id)
-    .then(function(res){
-      return res.data
+    .then(function(){
+      return chat;
     }, console.log)
   }
   
