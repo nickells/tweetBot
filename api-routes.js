@@ -2,7 +2,8 @@ var express = require('express');
 var router = express.Router();
 var db = require('./db.js')
 var Twitter = require('twitter');
-var markov = require('markov')
+var markov = require('markov');
+
  
 var markovInstance;
 
@@ -14,45 +15,43 @@ var twitterClient = new Twitter({
 });
  
 
-var tweetText;
 
 router.get('/tweets/:username', function(req,res,next){
   var params = {screen_name: req.params.username, count: 200};
   twitterClient.get('statuses/user_timeline', params, function(error, tweets, response){
-    // console.log(response)
     if (!error) {
       res.json(tweets);
-      tweetText = tweets.reduce(function(str,tweet){
-        return str + ' ' + tweet.text
+      var tweetText = tweets.reduce(function(str,tweet){
+        return str + ' ' + tweet.text;
       },'')
-      markovInstance = markov(1)
-      markovInstance.seed(tweetText)
+      markovInstance = markov(1);
+      markovInstance.seed(tweetText);
     }
     else{
-      res.err(error)
+      res.send(error)
     }
   });
 })
 
 router.post('/bot', function(req,res,next){
-  var response = markovInstance.respond(req.body.chatBody,req.body.chatBody.length+5)
+  var response = markovInstance.respond(req.body.chatBody,req.body.chatBody.length+5);
   response = response.filter(function(word){
-    return word.indexOf('http') === -1 && word.indexOf('@') === -1
+    return word.indexOf('http') === -1 && word.indexOf('@') === -1;
   })
-  res.send(response)
+  res.send(response);
 })
 
 router.post('/chats', function(req,res,next){
   db.Chat.create(req.body.chat)
   .then(function(chat){
-    res.json(chat)
+    res.json(chat);
   })
 })
 
 router.get('/chats', function(req,res,next){
   db.Chat.find()
   .then(function(chats){
-    res.json(chats)
+    res.json(chats);
   })
 })
 
