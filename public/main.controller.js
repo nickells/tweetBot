@@ -1,4 +1,4 @@
-app.controller('MainCtrl', function($scope,TwitterFactory,ChatFactory,$timeout){
+app.controller('MainCtrl', function($scope,TwitterFactory,ChatFactory,$timeout,$state){
   $scope.tweets = [];
   $scope.chat = [];
   $scope.submitForm = function(){
@@ -16,6 +16,12 @@ app.controller('MainCtrl', function($scope,TwitterFactory,ChatFactory,$timeout){
       $timeout(function(){
         $scope.chat.push({text: res.join(' '), sender: $scope.tweets[0].user.name + 'Bot'})
       },500)
+    })
+  }
+  $scope.saveChat = function(){
+    ChatFactory.saveChat({messages: $scope.chat})
+    .then(function(){
+      $state.go('chats')
     })
   }
 })

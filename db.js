@@ -1,13 +1,13 @@
 var mongoose = require('mongoose');
 mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/newDb')
 
-var postSchema = mongoose.Schema({
-	title: {type: String, required: true},
-	text: {type: String, required: true},
+var chatSchema = mongoose.Schema({
+	messages: Array,
+  date: Date
 })
 
-var Post = mongoose.model('Post', postSchema)
+var Chat = mongoose.model('Chat', chatSchema)
 
 module.exports={
-	Post: Post
+	Chat: Chat
 }

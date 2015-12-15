@@ -45,5 +45,27 @@ router.post('/bot', function(req,res,next){
   res.send(response)
 })
 
+router.post('/chats', function(req,res,next){
+  db.Chat.create(req.body.chat)
+  .then(function(chat){
+    res.json(chat)
+  })
+})
+
+router.get('/chats', function(req,res,next){
+  db.Chat.find()
+  .then(function(chats){
+    res.json(chats)
+  })
+})
+
+router.delete('/chats/:id', function(req,res,next){
+  db.Chat.findById(req.params.id).remove().exec()
+  .then(function(chat){
+    res.json(chat);
+  })
+
+})
+
 
 module.exports = router;
