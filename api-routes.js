@@ -2,16 +2,15 @@ var express = require('express');
 var router = express.Router();
 var db = require('./db.js')
 var Twitter = require('twitter');
-var keys = require('./keysAndSuch.js')
 var markov = require('markov')
  
 var m;
 
 var twitterClient = new Twitter({
-  consumer_key: process.env.TWITTER_CONSUMER_KEY || keys.twitter.consumerKey,
-  consumer_secret: process.env.TWITTER_CONSUMER_SECRET || keys.twitter.consumerSecret,
-  access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY || keys.twitter.accessTokenKey,
-  access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET || keys.twitter.accessTokenSecret
+  consumer_key: process.env.TWITTER_CONSUMER_KEY || require('./keysAndSuch').twitter.consumerKey,
+  consumer_secret: process.env.TWITTER_CONSUMER_SECRET || require('./keysAndSuch').twitter.consumerSecret,
+  access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY || require('./keysAndSuch').twitter.accessTokenKey,
+  access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET || require('./keysAndSuch').twitter.accessTokenSecret
 });
  
 
