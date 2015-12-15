@@ -24,7 +24,7 @@ router.get('/tweets/:username', function(req,res,next){
       var tweetText = tweets.reduce(function(str,tweet){
         return str + ' ' + tweet.text;
       },'')
-      markovInstance = markov(1);
+      markovInstance = markov(2);
       markovInstance.seed(tweetText);
     }
     else{
@@ -34,7 +34,7 @@ router.get('/tweets/:username', function(req,res,next){
 })
 
 router.post('/bot', function(req,res,next){
-  var response = markovInstance.respond(req.body.chatBody,req.body.chatBody.length+5);
+  var response = markovInstance.respond(req.body.chatBody, req.body.chatBody.split(' ').length+3);
   response = response.filter(function(word){
     return word.indexOf('http') === -1 && word.indexOf('@') === -1;
   })
