@@ -6,6 +6,15 @@ body {
   height: 480px;
   overflow: scroll; }
 
+.logo{
+  vertical-align: bottom;
+  width: 148px;
+  padding-right: 20px;
+}
+h1{
+  display: inline;
+}
+
 .chatContainer {
   overflow: scroll;
   border: 1px solid #EEE;
@@ -26,7 +35,7 @@ body {
 .tabs {
   cursor: pointer;
   float: right;
-  transform: translateY(-19px); }
+  transform: translateY(109px); }
   .tabs div {
     border: 1px solid #DDD;
     padding: 10px;
