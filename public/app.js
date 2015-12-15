@@ -23,3 +23,9 @@ app.config(function($stateProvider,$locationProvider,$stateProvider){
       controller: 'ChatCtrl'
     })
 })
+.run(function($rootScope){
+  $rootScope.$on('$stateChangeSuccess', function(event,toState){
+    $rootScope.currentState = toState.name;
+    console.log($rootScope.currentState)
+  })
+})

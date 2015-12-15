@@ -23,4 +23,16 @@ body {
 .bold {
   font-weight: bold; }
 
+.tabs {
+  cursor: pointer;
+  float: right;
+  transform: translateY(-19px); }
+  .tabs div {
+    border: 1px solid #DDD;
+    padding: 10px;
+    display: inline; }
+
+.activeTab {
+  border-bottom: 1px solid white !important; }
+
 /*# sourceMappingURL=style.css.map */

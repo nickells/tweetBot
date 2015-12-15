@@ -8,14 +8,14 @@
 <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css">
 <link rel="stylesheet" href="style.css">
-<title>Hello</title>
+<title>TweetBot</title>
 
 </head>
 <body ng-app="Website">
   <div class="container">
     <div class="row">
       <div class="page-header">
-        <h1>Tweetbot</h1>
+        <h1>Tweetbot</h1> <div class="tabs"><div ui-sref="main" ng-class="{'activeTab': currentState === 'main'}">Generate</div><div ui-sref="chats" ng-class="{'activeTab': currentState === 'chats'}">View All</div></div>
       </div>
     </div>
     <ui-view>
