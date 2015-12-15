@@ -1,7 +1,7 @@
 app.factory('ChatFactory', function($http){
   var factory = {}
   factory.sendMessage = function(text){
-    return $http.post('/api/bot', {body: text})
+    return $http.post('/api/bot', {chatBody: text})
     .then(function(res){
       return res.data;
     }, console.log)
